@@ -1,0 +1,52 @@
+SITE — FUNDACIÓN PROSPECCIÓN HANCOCK
+====================================
+
+1. OUVRIR LE SITE EN LOCAL
+   Double-cliquez sur "index.html". Le site fonctionne hors ligne,
+   sans installation ni serveur. Toutes les pages sont reliées entre elles.
+
+2. PAGES INCLUSES
+   index.html ............. Accueil
+   a-propos.html .......... À propos (histoire, mission, gouvernance)
+   equipe.html ............ Notre équipe
+   causes.html ............ Nos causes / Impact
+   demande-don.html ....... Formulaire de demande de don (WhatsApp)
+   actualites.html ........ Actualités
+   galerie.html ........... Galerie photos
+   contact.html ........... Contact
+   confidentialite.html ... Politique de confidentialité
+   mentions-legales.html .. Mentions légales
+
+3. NUMÉRO WHATSAPP (À FAIRE EN PREMIER)
+   Ouvrez le fichier : assets/js/site.js
+   Ligne : var WHATSAPP_NUMBER = "61400000000";
+   Remplacez par le numéro officiel de la fondation, au format
+   international, SANS "+", SANS espace, SANS tiret.
+   Exemple : +61 4 1234 5678  ->  "61412345678"
+   Pensez aussi à remplacer "+__ __ __ __ __" affiché dans le pied de page
+   (fichiers .html) et l'e-mail contact@fundacion-hancock.org.
+
+4. MODIFIER LES TEXTES
+   Chaque page est un fichier .html modifiable avec un simple éditeur de
+   texte (Notepad, TextEdit, VS Code). Les textes sont entre les balises,
+   par exemple : <h1>Mon nouveau titre</h1>.
+
+5. REMPLACER LES IMAGES
+   Dossier : assets/img/
+   Gardez les mêmes noms de fichiers pour un remplacement immédiat :
+   logo.png, hero.jpg, cause-sante.jpg, cause-education.jpg,
+   cause-communaute.jpg, cause-sport.jpg, actu-1.png ... actu-6.png
+
+6. CHARTE GRAPHIQUE
+   Bleu marine #163A5C · Doré #AF812B · Titres en serif (Cormorant Garamond)
+   Les couleurs sont centralisées en haut de assets/css/style.css.
+
+7. IMPORTANT
+   Les chiffres d'impact (48 M$, 120 000 bénéficiaires, etc.), les intitulés
+   de l'équipe, les actualités et les coordonnées sont des exemples de
+   démonstration. Ils doivent être remplacés par les contenus définitifs
+   fournis par la fondation avant toute mise en ligne.
+
+8. MISE EN LIGNE
+   Envoyez le contenu de ce dossier tel quel sur l'hébergement (racine du
+   site), avec un certificat HTTPS actif.

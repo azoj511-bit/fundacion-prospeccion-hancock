@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Solicitar una Donación — Fundación Prospección Hancock</title>
+<meta name="description" content="Formulario oficial de solicitud de donación y apoyo financiero ante la Fundación Prospección Hancock." />
+<meta property="og:title" content="Solicitar una Donación — Fundación Prospección Hancock" />
+<meta property="og:description" content="Formulario oficial de solicitud de donación ante la Fundación Prospección Hancock." />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary_large_image" />
+<link rel="icon" href="assets/img/logo.png" type="image/png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+<a class="skip" href="#main">Saltar al contenido</a>
+
+<!-- Barra Superior con Traductor y Contacto -->
+<div class="top-bar">
+  <div class="wrap top-bar-inner">
+    <div class="top-bar-contact">
+      <span>✉ <a href="mailto:prospectinghancock0@gmail.com">prospectinghancock0@gmail.com</a></span>
+      <span>📱 WhatsApp: <a href="https://wa.me/33757754014">+33 7 57 75 40 14</a></span>
+    </div>
+    <div class="top-bar-translate">
+      <span class="lang-label">🌐 Idioma / Language:</span>
+      <div id="google_translate_element"></div>
+    </div>
+  </div>
+</div>
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="brand" href="index.html">
+      <img src="assets/img/logo.png" alt="Logo Fundación Prospección Hancock" width="52" height="52" />
+      <span>
+        <strong>Fundación Prospección Hancock</strong>
+        <small>Brazo filantrópico de Hancock Prospecting</small>
+      </span>
+    </a>
+    <button class="burger" aria-expanded="false" aria-controls="nav" aria-label="Abrir menú"><span></span><span></span><span></span></button>
+    <nav id="nav" class="nav">
+      <a href="index.html">Inicio</a>
+      <a href="a-propos.html">Sobre nosotros</a>
+      <a href="equipe.html">Equipo</a>
+      <a href="causes.html">Nuestras causas</a>
+      <a href="actualites.html">Noticias</a>
+      <a href="galerie.html">Galería</a>
+      <a href="contact.html">Contacto</a>
+      <a class="btn btn-gold nav-cta" href="demande-don.html">Solicitar donación</a>
+    </nav>
+  </div>
+</header>
+
+<section class="page-hero"><div class="wrap"><p class="eyebrow">Programas de Ayuda</p><h1>Presentar una Solicitud de Donación</h1></div></section>
+<main id="main">
+
+<section class="section">
+  <div class="wrap form-layout">
+    <form id="donForm" class="form" novalidate>
+      <p class="form-intro">Todos los campos con asterisco (*) son obligatorios. Al pulsar en enviar, se generará un mensaje automático estructurado en WhatsApp para su transmisión directa e inmediata al comité de evaluación de la fundación.</p>
+
+      <div class="field">
+        <label for="nom">Nombre completo o Razón Social *</label>
+        <input id="nom" name="Nombre / Razón Social" type="text" placeholder="Ej: Juan Pérez / Asociación Amigos de la Salud" required />
+        <span class="error"></span>
+      </div>
+
+      <div class="row">
+        <div class="field">
+          <label for="profession">Profesión u Ocupación actual *</label>
+          <input id="profession" name="Profesión / Ocupación" type="text" placeholder="Ej: Docente, Agricultor, Autónomo, Ingeniero..." required />
+          <span class="error"></span>
+        </div>
+        <div class="field">
+          <label for="salaire">Salario o Ingresos mensuales promedio *</label>
+          <input id="salaire" name="Salario / Ingresos mensuales" type="text" placeholder="Ej: 1,500 USD / 1,200 EUR / Moneda local" required />
+          <span class="error"></span>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="field">
+          <label for="qualite">Calidad del solicitante *</label>
+          <select id="qualite" name="Calidad del solicitante" required>
+            <option value="">— Seleccionar —</option>
+            <option value="Particular / Familia">Particular / Familia</option>
+            <option value="Asociación / ONG">Asociación / ONG</option>
+            <option value="Institución educativa / Escuela">Institución educativa / Escuela</option>
+            <option value="Hospital / Centro de Salud">Hospital / Centro de Salud</option>
+            <option value="Club deportivo regional">Club deportivo regional</option>
+            <option value="Comunidad Indígena / Rural">Comunidad Indígena / Rural</option>
+            <option value="Otro">Otro</option>
+          </select>
+          <span class="error"></span>
+        </div>
+
+        <div class="field">
+          <label for="objet">Ámbito del proyecto *</label>
+          <select id="objet" name="Ámbito del proyecto" required>
+            <option value="">— Seleccionar —</option>
+            <option value="Salud y Atención Médica">Salud y Atención Médica</option>
+            <option value="Educación y Becas de Estudio">Educación y Becas de Estudio</option>
+            <option value="Desarrollo Comunitario y Social">Desarrollo Comunitario y Social</option>
+            <option value="Deporte y Juventud">Deporte y Juventud</option>
+            <option value="Emergencia y Catástrofes">Emergencia y Catástrofes</option>
+            <option value="Otro">Otro</option>
+          </select>
+          <span class="error"></span>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="field">
+          <label for="tel">Número de Teléfono / WhatsApp *</label>
+          <input id="tel" name="Teléfono WhatsApp" type="tel" placeholder="Ej: +34 600 000 000 / +54 9 11..." required />
+          <span class="error"></span>
+        </div>
+        <div class="field">
+          <label for="email">Correo Electrónico oficial *</label>
+          <input id="email" name="Correo electrónico" type="email" placeholder="ejemplo@correo.com" required />
+          <span class="error"></span>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="ville">Ciudad, Región y País de ejecución *</label>
+        <input id="ville" name="Ciudad y País" type="text" placeholder="Ej: Sevilla, España / Buenos Aires, Argentina / Perth, Australia" required />
+        <span class="error"></span>
+      </div>
+
+      <div class="field">
+        <label for="titre_projet">Título o Nombre del proyecto *</label>
+        <input id="titre_projet" name="Título del proyecto" type="text" placeholder="Ej: Equipamiento de sala de urgencias rurales / Beca de estudios universitarios" required />
+        <span class="error"></span>
+      </div>
+
+      <div class="field">
+        <label for="description">Descripción detallada del proyecto y necesidades *</label>
+        <textarea id="description" name="Descripción detallada del proyecto" rows="7" placeholder="Describa el objetivo del proyecto, las personas beneficiadas, los plazos previstos y la justificación del presupuesto..." required></textarea>
+        <span class="error"></span>
+      </div>
+
+      <div class="field">
+        <label for="montant">Monto financiero solicitado (indicativo en USD, EUR o moneda local)</label>
+        <input id="montant" name="Monto solicitado" type="number" min="0" step="1" placeholder="Ej: 5000" />
+      </div>
+
+      <div class="field">
+        <label for="piece">Documentación justificativa (PDF o imagen, opcional)</label>
+        <input id="piece" name="piece" type="file" accept=".pdf,.jpg,.jpeg,.png" />
+        <small class="hint">El archivo no se envía a través del formulario: podrá adjuntarlo directamente en el chat de WhatsApp que se abrirá al enviar.</small>
+      </div>
+
+      <div class="field check">
+        <label>
+          <input id="consent" type="checkbox" required />
+          Acepto expresamente que mis datos sean tratados por la Fundación Prospección Hancock con el fin exclusivo de instruir y evaluar mi solicitud de donación. *
+        </label>
+        <span class="error"></span>
+      </div>
+
+      <button class="btn btn-gold" type="submit" style="font-size: 1rem; padding: 1rem 2rem;">Enviar mi solicitud por WhatsApp</button>
+      <p id="formStatus" class="status" role="status"></p>
+    </form>
+
+    <aside class="panel">
+      <h3>¿Cómo se procesa su solicitud?</h3>
+      <ol class="steps">
+        <li><strong>Recepción:</strong> Recepción instantánea de su solicitud mediante WhatsApp oficial.</li>
+        <li><strong>Instrucción:</strong> Comprobación de datos, profesión, ingresos y coherencia del proyecto.</li>
+        <li><strong>Comité:</strong> Evaluación por parte del comité de asignación de donaciones.</li>
+        <li><strong>Resolución:</strong> Comunicación del dictamen y formalización de la ayuda económica.</li>
+      </ol>
+
+      <h3>Criterios de elegibilidad</h3>
+      <ul class="list">
+        <li>Proyecto de interés general o necesidad humanitaria real.</li>
+        <li>Presupuesto y destino de los fondos claramente desglosados.</li>
+        <li>Compromiso de acreditación del uso transparente de la donación.</li>
+      </ul>
+
+      <div style="background: var(--green-subtle); border-left: 3px solid var(--green); padding: 1rem; border-radius: 4px; margin-top: 1.5rem;">
+        <strong style="color: var(--green); display: block; margin-bottom: .3rem;">Atención personalizada</strong>
+        <p style="margin: 0; font-size: .88rem; color: var(--muted);">Si tiene dudas antes de enviar, puede consultar directamente a nuestro equipo vía correo a <a href="mailto:prospectinghancock0@gmail.com">prospectinghancock0@gmail.com</a>.</p>
+      </div>
+    </aside>
+  </div>
+</section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div>
+      <img src="assets/img/logo.png" alt="" width="64" height="64" class="footer-logo" />
+      <p>La Fundación Prospección Hancock canaliza los compromisos filantrópicos del grupo Hancock Prospecting: salud, educación, comunidades y deporte.</p>
+    </div>
+    <div>
+      <h3>Navegación</h3>
+      <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="a-propos.html">Sobre nosotros</a></li>
+        <li><a href="equipe.html">Nuestro equipo</a></li>
+        <li><a href="causes.html">Nuestras causas / Impacto</a></li>
+        <li><a href="demande-don.html">Solicitar una donación</a></li>
+        <li><a href="actualites.html">Noticias</a></li>
+        <li><a href="galerie.html">Galería</a></li>
+        <li><a href="contact.html">Contacto</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3>Contacto oficial</h3>
+      <ul class="plain">
+        <li><a href="mailto:prospectinghancock0@gmail.com">prospectinghancock0@gmail.com</a></li>
+        <li>WhatsApp&nbsp;: <a href="https://wa.me/33757754014">+33 7 57 75 40 14</a></li>
+        <li>Western Australia (WA 6005), Australia</li>
+      </ul>
+      <ul class="plain">
+        <li><a href="confidentialite.html">Política de privacidad</a></li>
+        <li><a href="mentions-legales.html">Aviso legal</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap legal">
+    <span>© 2026 Hancock Prospecting PTY LTD — Fundación Prospección Hancock. Todos los derechos reservados.</span>
+    <span><a href="mentions-legales.html">Aviso legal</a> · <a href="confidentialite.html">Privacidad</a></span>
+  </div>
+</footer>
+
+<script src="assets/js/site.js"></script>
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</body>
+</html>

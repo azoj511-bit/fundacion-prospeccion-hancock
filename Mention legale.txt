@@ -1,0 +1,20 @@
+# 8. Mentions légales
+
+**Éditeur du site**
+Hancock Prospecting PTY LTD
+Forme juridique : Proprietary Limited Company (Australie)
+ACN / ABN : *[008676417/69008676417]*
+Siège social : *[Western Australia (WA 6005)]*
+Téléphone : *[+33 757754014]* — E-mail : *[ prospectinghancock0@gmail.com]*
+Directeur de la publication : *[Gina Rinehart Directrice Generale executive chairman]*
+
+**Hébergement**
+*[Vercel]*
+
+**Propriété intellectuelle**
+L'ensemble des éléments du site (textes, photographies, logos, marques, éléments
+graphiques, structure, code) est protégé par le droit de la propriété intellectuelle
+et demeure la propriété exclusive de Hancock Prospecting PTY LTD ou de ses ayants droit.
+Toute reproduction, représentation, adaptation ou exploitation, totale ou partielle,
+sans autorisation écrite préalable est interdite.
+
