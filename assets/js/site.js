@@ -17,9 +17,9 @@ window.googleTranslateElementInit = googleTranslateElementInit;
   "use strict";
 
   /* ------------------------------------------------------------------
-   * NÚMERO DE WHATSAPP OFICIAL DE LA FUNDACIÓN (+33 7 57 75 40 14)
+   * NÚMERO DE WHATSAPP OFICIAL DE LA FUNDACIÓN (+61 420134044)
    * ------------------------------------------------------------------ */
-  var WHATSAPP_NUMBER = "33757754014";
+  var WHATSAPP_NUMBER = "61420134044";
 
   /* Menú móvil */
   var burger = document.querySelector(".burger");
