@@ -14,6 +14,23 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="assets/css/style.css" />
+<!-- Leaflet.js - Carte interactive -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+<style>
+  #contact-map {
+    width: 100%;
+    height: 320px;
+    border-radius: var(--radius, 8px);
+    border: 1px solid var(--line, #e0ddd5);
+    z-index: 0;
+  }
+  .leaflet-popup-content-wrapper {
+    font-family: 'Source Sans 3', sans-serif;
+    border-radius: 8px;
+    box-shadow: 0 4px 16px rgba(0,0,0,.18);
+  }
+  .leaflet-popup-content strong { color: #2d5c3a; }
+</style>
 </head>
 <body>
 <a class="skip" href="#main">Saltar al contenido</a>
@@ -123,10 +140,10 @@
         <li><strong>Dirección General</strong><br />Gina Rinehart, Executive Chairman</li>
       </ul>
       
-      <div style="margin: 1.5rem 0; border-radius: var(--radius); overflow: hidden; border: 1px solid var(--line);">
-        <img src="assets/img/west-perth-helipad.jpg" alt="Sede corporativa de Hancock Prospecting en West Perth" style="width:100%; height:auto;" />
-        <div style="padding: .8rem .9rem; background: var(--sand-light); font-size: .83rem; color: var(--muted); border-top: 1px solid var(--line);">
-          <strong style="display:block; color:var(--green); margin-bottom:.2rem;">Sede de West Perth</strong>
+      <div style="margin: 1.5rem 0;">
+        <div id="contact-map"></div>
+        <div style="padding: .8rem .9rem; background: var(--sand-light, #f7f5f0); font-size: .83rem; color: var(--muted, #777); border: 1px solid var(--line, #e0ddd5); border-top: none; border-radius: 0 0 var(--radius, 8px) var(--radius, 8px);">
+          <strong style="display:block; color:var(--green, #2d5c3a); margin-bottom:.2rem;">Sede de West Perth</strong>
           Complejo administrativo de West Perth (WA 6005), nodo de coordinación de ayudas sociales y transporte médico de urgencia.
         </div>
       </div>
@@ -183,6 +200,38 @@
 </a>
 
 <script src="assets/js/site.js"></script>
+<!-- Leaflet.js -->
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV/XN/o/A=" crossorigin=""></script>
+<script>
+  (function () {
+    // Coordonnées : Hancock Prospecting, West Perth WA 6005
+    var lat = -31.9456, lng = 115.8508;
+
+    var map = L.map('contact-map', {
+      center: [lat, lng],
+      zoom: 15,
+      scrollWheelZoom: false
+    });
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+      maxZoom: 19
+    }).addTo(map);
+
+    var icon = L.divIcon({
+      className: '',
+      html: '<div style="background:#2d5c3a;width:36px;height:36px;border-radius:50% 50% 50% 0;transform:rotate(-45deg);border:3px solid #fff;box-shadow:0 2px 8px rgba(0,0,0,.35);"></div>',
+      iconSize: [36, 36],
+      iconAnchor: [18, 36],
+      popupAnchor: [0, -38]
+    });
+
+    L.marker([lat, lng], { icon: icon })
+      .addTo(map)
+      .bindPopup('<strong>Hancock Prospecting PTY LTD</strong><br>West Perth WA 6005, Australia<br><a href="https://maps.google.com/?q=-31.9456,115.8508" target="_blank" rel="noopener" style="color:#2d5c3a">Abrir en Google Maps ↗</a>')
+      .openPopup();
+  })();
+</script>
 <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </body>
 </html>
