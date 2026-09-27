@@ -631,36 +631,4 @@ textarea { resize: vertical; }
   margin-top: 0.25rem;
 }
 
-/* Badges de Réassurance */
-.trust-band {
-  background: var(--sand);
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
-  padding: 1.8rem 0;
-}
-.trust-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 1.5rem;
-  text-align: center;
-}
-.trust-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.4rem;
-}
-.trust-item svg {
-  width: 28px;
-  height: 28px;
-  fill: var(--gold);
-}
-.trust-item strong {
-  color: var(--green);
-  font-size: 0.95rem;
-}
-.trust-item span {
-  font-size: 0.82rem;
-  color: var(--muted);
-  line-height: 1.4;
-}
+
