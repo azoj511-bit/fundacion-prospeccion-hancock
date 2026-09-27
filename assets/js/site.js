@@ -1,4 +1,4 @@
-/* Fundación Prospección Hancock — Interacciones & Multilingüe */
+/* Fundación Prospección Hancock — Interacciones, Multilingüe & Experiencia de Usuario */
 
 /* Inicialización del traductor de Google */
 function googleTranslateElementInit() {
@@ -21,16 +21,112 @@ window.googleTranslateElementInit = googleTranslateElementInit;
    * ------------------------------------------------------------------ */
   var WHATSAPP_NUMBER = "61420134044";
 
-  /* Menú móvil */
+  /* 1. Menú móvil interactivo con autocierre */
   var burger = document.querySelector(".burger");
   var nav = document.getElementById("nav");
+  var header = document.querySelector(".site-header");
+
   if (burger && nav) {
-    burger.addEventListener("click", function () {
+    burger.addEventListener("click", function (e) {
+      e.stopPropagation();
       var open = nav.classList.toggle("open");
       burger.setAttribute("aria-expanded", String(open));
     });
+
+    document.addEventListener("click", function (e) {
+      if (nav.classList.contains("open") && !nav.contains(e.target) && !burger.contains(e.target)) {
+        nav.classList.remove("open");
+        burger.setAttribute("aria-expanded", "false");
+      }
+    });
+
+    var navLinks = nav.querySelectorAll("a");
+    Array.prototype.forEach.call(navLinks, function (link) {
+      link.addEventListener("click", function () {
+        if (nav.classList.contains("open")) {
+          nav.classList.remove("open");
+          burger.setAttribute("aria-expanded", "false");
+        }
+      });
+    });
   }
 
+  /* 2. Header Glassmorphism & Botón Volver Arriba */
+  var scrollTopBtn = document.createElement("button");
+  scrollTopBtn.className = "scroll-top-btn";
+  scrollTopBtn.setAttribute("type", "button");
+  scrollTopBtn.setAttribute("aria-label", "Volver al inicio de la página");
+  scrollTopBtn.innerHTML = '<svg viewBox="0 0 24 24"><path d="M12 4l-8 8h5v8h6v-8h5z"/></svg>';
+  document.body.appendChild(scrollTopBtn);
+
+  scrollTopBtn.addEventListener("click", function () {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+
+  function handleScroll() {
+    var y = window.scrollY || window.pageYOffset;
+    if (header) {
+      if (y > 40) header.classList.add("scrolled");
+      else header.classList.remove("scrolled");
+    }
+    if (y > 400) {
+      scrollTopBtn.classList.add("visible");
+    } else {
+      scrollTopBtn.classList.remove("visible");
+    }
+  }
+  window.addEventListener("scroll", handleScroll, { passive: true });
+  handleScroll();
+
+  /* 3. Contador animado para cifras clave (Stats Counter) */
+  function animateStats() {
+    var statsContainer = document.querySelector(".stats");
+    if (!statsContainer || statsContainer.dataset.animated) return;
+
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          statsContainer.dataset.animated = "true";
+          var items = statsContainer.querySelectorAll("strong");
+          Array.prototype.forEach.call(items, function (el) {
+            var rawText = el.textContent.trim();
+            // Match number and suffix
+            var match = rawText.match(/^([0-9\s]+)(.*)$/);
+            if (!match) return;
+            var numStr = match[1].replace(/\s/g, "");
+            var targetNum = parseInt(numStr, 10);
+            var suffix = match[2];
+            if (isNaN(targetNum)) return;
+
+            var duration = 1600;
+            var startTime = null;
+
+            function step(time) {
+              if (!startTime) startTime = time;
+              var progress = Math.min((time - startTime) / duration, 1);
+              // Ease-out expo
+              var current = Math.floor((1 - Math.pow(1 - progress, 3)) * targetNum);
+              el.textContent = current.toLocaleString("es-ES") + (suffix ? " " + suffix.trim() : "");
+              if (progress < 1) {
+                requestAnimationFrame(step);
+              } else {
+                el.textContent = rawText;
+              }
+            }
+            requestAnimationFrame(step);
+          });
+          observer.disconnect();
+        }
+      });
+    }, { threshold: 0.3 });
+
+    observer.observe(statsContainer);
+  }
+  if ("IntersectionObserver" in window) {
+    animateStats();
+  }
+
+  /* 4. Formulario & Validación */
   function setError(field, message) {
     var wrap = field.closest(".field");
     if (!wrap) return;
@@ -62,6 +158,55 @@ window.googleTranslateElementInit = googleTranslateElementInit;
     });
     if (first) first.focus();
     return ok;
+  }
+
+  // Validación reactiva
+  document.querySelectorAll("form.form").forEach(function (form) {
+    form.querySelectorAll("input, select, textarea").forEach(function (field) {
+      field.addEventListener("blur", function () {
+        if (!field.required && !field.value.trim()) return;
+        var value = field.type === "checkbox" ? field.checked : field.value.trim();
+        var message = "";
+        if (!value && field.required) {
+          message = "Este campo es obligatorio.";
+        } else if (field.type === "email" && field.value.trim() && !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(field.value)) {
+          message = "Dirección de correo electrónico no válida.";
+        }
+        setError(field, message);
+      });
+    });
+  });
+
+  // Contador de caracteres para descripción en demande-don
+  var descField = document.getElementById("description");
+  if (descField) {
+    var charBadge = document.createElement("div");
+    charBadge.className = "char-count";
+    charBadge.textContent = "0 caracteres";
+    descField.parentNode.appendChild(charBadge);
+    descField.addEventListener("input", function () {
+      var len = descField.value.length;
+      charBadge.textContent = len + " caracteres (recomendado: +100)";
+      if (len >= 100) charBadge.style.color = "var(--green)";
+      else charBadge.style.color = "var(--muted)";
+    });
+  }
+
+  // Badge pour champ fichier
+  var pieceInput = document.getElementById("piece");
+  if (pieceInput) {
+    var fileBadge = document.createElement("div");
+    fileBadge.className = "file-badge";
+    pieceInput.parentNode.appendChild(fileBadge);
+    pieceInput.addEventListener("change", function () {
+      if (pieceInput.files && pieceInput.files[0]) {
+        var f = pieceInput.files[0];
+        fileBadge.innerHTML = '📎 <strong>Archivo:</strong> ' + f.name + ' (' + Math.round(f.size / 1024) + ' KB) — <em>recuerde adjuntarlo en WhatsApp al abrirse</em>';
+        fileBadge.classList.add("visible");
+      } else {
+        fileBadge.classList.remove("visible");
+      }
+    });
   }
 
   function buildMessage(form, title) {
@@ -106,7 +251,223 @@ window.googleTranslateElementInit = googleTranslateElementInit;
   handle("donForm", "formStatus", "Nueva Solicitud de Donación - Fundación Prospección Hancock");
   handle("contactForm", "contactStatus", "Mensaje de Contacto - Fundación Prospección Hancock");
 
-  /* Bouton flottant WhatsApp officiel */
+  /* 5. FAQ Accordéon interactif */
+  document.querySelectorAll(".faq-question").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      var item = btn.closest(".faq-item");
+      var isOpen = item.classList.contains("open");
+      // Ferme les autres pour un effet propre
+      var parent = item.closest(".faq-wrap");
+      if (parent) {
+        parent.querySelectorAll(".faq-item").forEach(function (other) {
+          other.classList.remove("open");
+        });
+      }
+      if (!isOpen) item.classList.add("open");
+    });
+  });
+
+  /* 6. Galerie : Filtres par catégories & Lightbox Plein Écran */
+  var gallery = document.querySelector(".gallery");
+  if (gallery) {
+    var figures = gallery.querySelectorAll("figure");
+
+    // Création de la Lightbox
+    var lbModal = document.createElement("div");
+    lbModal.className = "lightbox-modal";
+    lbModal.setAttribute("role", "dialog");
+    lbModal.setAttribute("aria-modal", "true");
+    lbModal.innerHTML =
+      '<div class="lightbox-card">' +
+        '<button class="lightbox-close" type="button" aria-label="Cerrar">&times;</button>' +
+        '<div class="lightbox-img-wrap">' +
+          '<button class="lightbox-nav-btn lightbox-prev" type="button" aria-label="Anterior">&#10094;</button>' +
+          '<img src="" alt="" />' +
+          '<button class="lightbox-nav-btn lightbox-next" type="button" aria-label="Siguiente">&#10095;</button>' +
+        '</div>' +
+        '<div class="lightbox-info">' +
+          '<span class="badge-cat"></span>' +
+          '<h3></h3>' +
+          '<p></p>' +
+        '</div>' +
+      '</div>';
+    document.body.appendChild(lbModal);
+
+    var lbImg = lbModal.querySelector(".lightbox-img-wrap img");
+    var lbCat = lbModal.querySelector(".badge-cat");
+    var lbTitle = lbModal.querySelector("h3");
+    var lbDesc = lbModal.querySelector("p");
+    var lbClose = lbModal.querySelector(".lightbox-close");
+    var lbPrev = lbModal.querySelector(".lightbox-prev");
+    var lbNext = lbModal.querySelector(".lightbox-next");
+
+    var visibleFigures = Array.from(figures);
+    var currentIndex = 0;
+
+    function openLightbox(index) {
+      if (index < 0) index = visibleFigures.length - 1;
+      if (index >= visibleFigures.length) index = 0;
+      currentIndex = index;
+
+      var fig = visibleFigures[currentIndex];
+      var img = fig.querySelector("img");
+      var cat = fig.querySelector(".badge-cat");
+      var title = fig.querySelector("strong");
+      var descNode = fig.querySelector("figcaption");
+
+      lbImg.src = img.src;
+      lbImg.alt = img.alt || "";
+      lbCat.textContent = cat ? cat.textContent : "Fundación Hancock";
+      lbTitle.textContent = title ? title.textContent : "";
+      
+      // Texte sans la catégorie et le titre
+      var descText = "";
+      if (descNode) {
+        var clone = descNode.cloneNode(true);
+        var bCat = clone.querySelector(".badge-cat");
+        if (bCat) bCat.remove();
+        var bStrong = clone.querySelector("strong");
+        if (bStrong) bStrong.remove();
+        descText = clone.textContent.trim();
+      }
+      lbDesc.textContent = descText;
+
+      lbModal.classList.add("active");
+      document.body.style.overflow = "hidden";
+    }
+
+    function closeLightbox() {
+      lbModal.classList.remove("active");
+      document.body.style.overflow = "";
+    }
+
+    figures.forEach(function (fig) {
+      fig.addEventListener("click", function () {
+        visibleFigures = Array.from(figures).filter(function (f) {
+          return !f.classList.contains("hidden");
+        });
+        var idx = visibleFigures.indexOf(fig);
+        if (idx !== -1) openLightbox(idx);
+      });
+    });
+
+    lbClose.addEventListener("click", closeLightbox);
+    lbPrev.addEventListener("click", function (e) { e.stopPropagation(); openLightbox(currentIndex - 1); });
+    lbNext.addEventListener("click", function (e) { e.stopPropagation(); openLightbox(currentIndex + 1); });
+
+    lbModal.addEventListener("click", function (e) {
+      if (e.target === lbModal) closeLightbox();
+    });
+
+    document.addEventListener("keydown", function (e) {
+      if (!lbModal.classList.contains("active")) return;
+      if (e.key === "Escape") closeLightbox();
+      if (e.key === "ArrowLeft") openLightbox(currentIndex - 1);
+      if (e.key === "ArrowRight") openLightbox(currentIndex + 1);
+    });
+
+    // Filtres de catégories
+    var filterBtns = document.querySelectorAll(".filter-btn");
+    filterBtns.forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        filterBtns.forEach(function (b) { b.classList.remove("active"); });
+        btn.classList.add("active");
+        var filter = btn.dataset.filter || "all";
+
+        figures.forEach(function (fig) {
+          var catText = (fig.querySelector(".badge-cat") ? fig.querySelector(".badge-cat").textContent : "").toLowerCase();
+          var titleText = (fig.querySelector("strong") ? fig.querySelector("strong").textContent : "").toLowerCase();
+          var combined = catText + " " + titleText;
+
+          if (filter === "all") {
+            fig.classList.remove("hidden");
+          } else if (filter === "sport" && (combined.includes("deporte") || combined.includes("athlète") || combined.includes("netball"))) {
+            fig.classList.remove("hidden");
+          } else if (filter === "rural" && (combined.includes("rural") || combined.includes("pastoral") || combined.includes("comunidades") || combined.includes("pueblo") || combined.includes("aldea"))) {
+            fig.classList.remove("hidden");
+          } else if (filter === "education" && (combined.includes("beca") || combined.includes("educación") || combined.includes("juventud") || combined.includes("ciencia") || combined.includes("espacial"))) {
+            fig.classList.remove("hidden");
+          } else if (filter === "institution" && (combined.includes("emblema") || combined.includes("hancock") || combined.includes("financiera") || combined.includes("minería") || combined.includes("diplomátic") || combined.includes("alocución") || combined.includes("directiva"))) {
+            fig.classList.remove("hidden");
+          } else {
+            fig.classList.add("hidden");
+          }
+        });
+      });
+    });
+  }
+
+  /* 7. Actualités : Recherche instantanée & Modale de lecture */
+  var newsGrid = document.querySelector(".actualites-grid-wrap");
+  var newsSearchInput = document.getElementById("newsSearchInput");
+  if (newsSearchInput && newsGrid) {
+    var articles = newsGrid.querySelectorAll("article.card");
+
+    newsSearchInput.addEventListener("input", function () {
+      var query = newsSearchInput.value.toLowerCase().trim();
+      articles.forEach(function (art) {
+        var text = art.textContent.toLowerCase();
+        if (!query || text.includes(query)) {
+          art.style.display = "";
+        } else {
+          art.style.display = "none";
+        }
+      });
+    });
+
+    // Modale de lecture complète
+    var newsModal = document.createElement("div");
+    newsModal.className = "lightbox-modal";
+    newsModal.innerHTML =
+      '<div class="lightbox-card">' +
+        '<button class="lightbox-close" type="button" aria-label="Cerrar">&times;</button>' +
+        '<div class="lightbox-img-wrap">' +
+          '<img src="" alt="" />' +
+        '</div>' +
+        '<div class="lightbox-info">' +
+          '<span class="badge-cat"></span>' +
+          '<h3></h3>' +
+          '<p style="font-size:1.02rem; line-height:1.7;"></p>' +
+        '</div>' +
+      '</div>';
+    document.body.appendChild(newsModal);
+
+    var nImg = newsModal.querySelector("img");
+    var nCat = newsModal.querySelector(".badge-cat");
+    var nTitle = newsModal.querySelector("h3");
+    var nDesc = newsModal.querySelector("p");
+    var nClose = newsModal.querySelector(".lightbox-close");
+
+    function closeNewsModal() {
+      newsModal.classList.remove("active");
+      document.body.style.overflow = "";
+    }
+    nClose.addEventListener("click", closeNewsModal);
+    newsModal.addEventListener("click", function (e) { if (e.target === newsModal) closeNewsModal(); });
+
+    articles.forEach(function (art) {
+      var btn = art.querySelector(".news-card-action");
+      if (btn) {
+        btn.addEventListener("click", function (e) {
+          e.preventDefault();
+          var img = art.querySelector("img");
+          var date = art.querySelector(".date");
+          var title = art.querySelector("h3");
+          var desc = art.querySelector("p");
+
+          if (img) nImg.src = img.src;
+          nCat.textContent = date ? date.textContent : "Actualidad";
+          nTitle.textContent = title ? title.textContent : "";
+          nDesc.textContent = desc ? desc.textContent : "";
+
+          newsModal.classList.add("active");
+          document.body.style.overflow = "hidden";
+        });
+      }
+    });
+  }
+
+  /* 8. Bouton flottant WhatsApp officiel */
   function setupWhatsAppFloat() {
     if (document.querySelector(".whatsapp-float")) return;
     var floatBtn = document.createElement("a");

@@ -63,13 +63,24 @@
 
 <section class="section">
   <div class="wrap">
-    <div class="grid grid-3">
+    <div class="news-toolbar">
+      <div class="news-search">
+        <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+        <input id="newsSearchInput" type="search" placeholder="Buscar noticias (ej: atletas, becas, Perth, Gina...)" aria-label="Buscar noticias" />
+      </div>
+      <div style="font-size: 0.88rem; color: var(--muted);">
+        Mostrando <strong style="color:var(--green)">noticias oficiales</strong> de la Fundación
+      </div>
+    </div>
+
+    <div class="grid grid-3 actualites-grid-wrap">
       <article class="card">
         <img src="assets/img/athletes-bonus-rinehart.jpg" alt="Gina Rinehart otorga primas a atletas australianos" loading="lazy" />
         <div class="card-body">
           <span class="date">15 septiembre 2026</span>
           <h3>1 272 500 $ en primas directas para atletas de élite</h3>
-          <p>Gina Rinehart y Hancock Prospecting premian personalmente a los medallistas mundiales y olímpicos (natación, remo, voleibol) por su esfuerzo, dedicación y entrega deportiva.</p>
+          <p>Gina Rinehart y Hancock Prospecting premian personalmente a los medallistas mundiales y olímpicos (natación, remo, voleibol) por su esfuerzo, dedicación y entrega deportiva. Este histórico aporte de más de 1,27 millones de dólares se distribuye directamente sin intermediarios entre los atletas clasificados para garantizar su estabilidad y preparación para futuras citas mundiales.</p>
+          <button class="news-card-action" type="button">Leer noticia completa →</button>
         </div>
       </article>
 
@@ -78,7 +89,8 @@
         <div class="card-body">
           <span class="date">28 agosto 2026</span>
           <h3>Fiesta Nacional en Perth: celebración y gran espectáculo lumínico</h3>
-          <p>Un espectáculo masivo de drones y luces ofrecido por Hancock Prospecting sobre el río Swan en Perth, reuniendo a más de 150 000 personas en una noche familiar y festiva.</p>
+          <p>Un espectáculo masivo de drones y luces ofrecido por Hancock Prospecting sobre el río Swan en Perth, reuniendo a más de 150 000 personas en una noche familiar y festiva. La exhibición conmemoró el orgullo de pertenencia comarcal y rindió homenaje a los pioneros agrícolas y mineros del interior de Australia Occidental.</p>
+          <button class="news-card-action" type="button">Leer noticia completa →</button>
         </div>
       </article>
 
@@ -87,18 +99,18 @@
         <div class="card-body">
           <span class="date">12 julio 2026</span>
           <h3>Un gran salto hacia el espacio y la innovación científica</h3>
-          <p>Inversiones de vanguardia en tecnología aeroespacial y becas universitarias avanzadas para preparar a la próxima generación de científicos e ingenieros australianos.</p>
+          <p>Inversiones de vanguardia en tecnología aeroespacial y becas universitarias avanzadas para preparar a la próxima generación de científicos e ingenieros australianos. La iniciativa abre pasantías de investigación y acceso a laboratorios satelitales para estudiantes de entornos rurales con talento excepcional.</p>
+          <button class="news-card-action" type="button">Leer noticia completa →</button>
         </div>
       </article>
-    </div>
 
-    <div class="grid grid-3" style="margin-top:2rem">
       <article class="card">
         <img src="assets/img/actu-1.png" alt="Becarios de excelencia rural" loading="lazy" />
         <div class="card-body">
           <span class="date">19 septiembre 2026</span>
           <h3>Premios a la Excelencia Rural: 60 nuevos becados</h3>
-          <p>Sesenta jóvenes procedentes de pueblos aislados recibieron su acreditación de beca completa para cursar estudios superiores y formación tecnológica.</p>
+          <p>Sesenta jóvenes procedentes de pueblos aislados recibieron su acreditación de beca completa para cursar estudios superiores y formación tecnológica. La ayuda cubre íntegramente tasas de matrícula, residencia universitaria y asignación de mantenimiento mensual durante todo el ciclo lectivo.</p>
+          <button class="news-card-action" type="button">Leer noticia completa →</button>
         </div>
       </article>
 
@@ -107,7 +119,8 @@
         <div class="card-body">
           <span class="date">14 mayo 2026</span>
           <h3>Solidez récord: 4 mil millones $ al servicio de la ayuda social</h3>
-          <p>Los sólidos resultados del grupo aseguran la disponibilidad presupuestaria para mantener los compromisos de donación y ayuda humanitaria sin interrupción.</p>
+          <p>Los sólidos resultados del grupo aseguran la disponibilidad presupuestaria para mantener los compromisos de donación y ayuda humanitaria sin interrupción. Esta autonomía financiera permite a la fundación comprometerse con obras a diez años vista en hospitales de campaña y ambulancias aéreas medicalizadas.</p>
+          <button class="news-card-action" type="button">Leer noticia completa →</button>
         </div>
       </article>
 
@@ -116,18 +129,18 @@
         <div class="card-body">
           <span class="date">18 abril 2026</span>
           <h3>Impulso histórico al Netball y al deporte femenino</h3>
-          <p>Firma de nuevos convenios de subvención para fomentar el entrenamiento de élite, la compra de material y el acceso de niñas de zonas rurales a competiciones oficiales.</p>
+          <p>Firma de nuevos convenios de subvención para fomentar el entrenamiento de élite, la compra de material y el acceso de niñas de zonas rurales a competiciones oficiales. El acuerdo incluye la construcción de 12 canchas polideportivas techadas en poblados del interior australiano.</p>
+          <button class="news-card-action" type="button">Leer noticia completa →</button>
         </div>
       </article>
-    </div>
 
-    <div class="grid grid-3" style="margin-top:2rem">
       <article class="card">
         <img src="assets/img/gina-rinehart-allocution-nationale.png" alt="Discurso oficial de Gina Rinehart sobre minería y compromiso social" loading="lazy" />
         <div class="card-body">
           <span class="date">25 marzo 2026</span>
           <h3>Alocución Nacional: Recursos y Soberanía al Servicio Ciudadano</h3>
-          <p>Gina Rinehart subrayó la contribución indispensable del sector minero y agropecuario para solventar el gasto social, la financiación hospitalaria y la soberanía comunitaria de Australia.</p>
+          <p>Gina Rinehart subrayó la contribución indispensable del sector minero y agropecuario para solventar el gasto social, la financiación hospitalaria y la soberanía comunitaria de Australia. Defendió con datos la necesidad de proteger a las empresas creadoras de riqueza que reinvierten en su propia gente.</p>
+          <button class="news-card-action" type="button">Leer noticia completa →</button>
         </div>
       </article>
 
@@ -136,7 +149,8 @@
         <div class="card-body">
           <span class="date">14 febrero 2026</span>
           <h3>Compromiso Firme con el Campo y los Municipios Aislados</h3>
-          <p>Presentación de un plan de ayuda de emergencia contra adversidades climáticas, dotado de fondos directos sin burocracia para ganaderos y familias rurales en situación de vulnerabilidad.</p>
+          <p>Presentación de un plan de ayuda de emergencia contra adversidades climáticas, dotado de fondos directos sin burocracia para ganaderos y familias rurales en situación de vulnerabilidad. Se han entregado ya más de 250 depósitos de agua y generadores de apoyo.</p>
+          <button class="news-card-action" type="button">Leer noticia completa →</button>
         </div>
       </article>
 
@@ -145,7 +159,8 @@
         <div class="card-body">
           <span class="date">20 enero 2026</span>
           <h3>Ceremonia Solemne de las Becas de Excelencia Rural</h3>
-          <p>Hancock Prospecting y la fundación galardonaron a jóvenes talentos procedentes de zonas remotas, facilitando su acceso integral a carreras de ciencias aplicadas y medicina de urgencias.</p>
+          <p>Hancock Prospecting y la fundación galardonaron a jóvenes talentos procedentes de zonas remotas, facilitando su acceso integral a carreras de ciencias aplicadas y medicina de urgencias con mentores de primer nivel.</p>
+          <button class="news-card-action" type="button">Leer noticia completa →</button>
         </div>
       </article>
     </div>
